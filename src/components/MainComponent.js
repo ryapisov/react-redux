@@ -1,25 +1,8 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import { changeOne, changeTwo } from "../store/actions"
 
-const ACTION_CHANGE_FIRST_NAME = 'ACTION_CHANGE_FIRST_NAME'
-const ACTION_CHANGE_SECOND_NAME = 'ACTION_CHANGE_SECOND_NAME'
-
-const changeOne = (newFirstName) => {
-  console.log(newFirstName)
-  return {
-    type: ACTION_CHANGE_FIRST_NAME,
-    payload: newFirstName
-  }
-}
-
-const changeTwo = (newSecondName) => {
-  console.log(newSecondName)
-  return {
-    type: ACTION_CHANGE_SECOND_NAME,
-    payload: newSecondName
-  }
-}
-class App extends Component {
+class MainComponent extends Component {
   render() {
     const { changeOneName, changeTwoName } = this.props
 
@@ -60,4 +43,4 @@ const putActionsToProps = (dispatch) => {
   }
 }
 
-export default connect(putStateToProps, putActionsToProps)(App)
+export default connect(putStateToProps, putActionsToProps)(MainComponent)
