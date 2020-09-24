@@ -21,7 +21,7 @@ const changeTwo = (newSecondName) => {
 }
 class App extends Component {
   render() {
-    const dispatch = this.props.dispatch
+    const { changeOneName, changeTwoName } = this.props
 
     return (
       <div>
@@ -30,14 +30,14 @@ class App extends Component {
           <input
             value={this.props.one}
             placeholder="one"
-            onChange={(e) => { dispatch(changeOne(e.target.value)) }}
+            onChange={(e) => { changeOneName(e.target.value) }}
           />
         </div>
         <div>
           <input
             value={this.props.two}
             placeholder="two"
-            onChange={(e) => { dispatch(changeTwo(e.target.value)) }}
+            onChange={(e) => { changeTwoName(e.target.value) }}
           />
         </div>
       </div>
@@ -46,11 +46,18 @@ class App extends Component {
 }
 
 // данные из state в компонент
-const mapStateToProps = (state) => {
+const putStateToProps = (state) => {
   return {
     one: state.oneInput,
     two: state.twoInput
   }
 }
 
-export default connect(mapStateToProps, null)(App)
+const putActionsToProps = (dispatch) => {
+  return {
+    changeOneName: (arg) => dispatch(changeOne(arg)),
+    changeTwoName: (arg) => dispatch(changeTwo(arg))
+  }
+}
+
+export default connect(putStateToProps, putActionsToProps)(App)
