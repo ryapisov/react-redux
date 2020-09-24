@@ -2,11 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import MainComponent from "./components/MainComponent"
-import { rootReduser } from "./store/reducers"
+import { MainComponent } from "./components/MainComponent"
+import rootReducer from "./store/reducers"
 import './style.scss'
 
-const store = createStore(rootReduser)
+const store = createStore(rootReducer)
 
 ReactDOM.render(
   <Provider store={store}>

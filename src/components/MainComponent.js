@@ -1,46 +1,12 @@
 import React, { Component } from "react"
-import { connect } from "react-redux"
-import { changeOne, changeTwo } from "../store/actions"
+import Auth from "./Auth/AuthContainer"
+import Registration from "./Registration/RegistrationContainer"
 
-class MainComponent extends Component {
-  render() {
-    const { changeOneName, changeTwoName } = this.props
-
-    return (
-      <div>
-        <div>{this.props.one + ' ' + this.props.two}</div>
-        <div>
-          <input
-            value={this.props.one}
-            placeholder="one"
-            onChange={(e) => { changeOneName(e.target.value) }}
-          />
-        </div>
-        <div>
-          <input
-            value={this.props.two}
-            placeholder="two"
-            onChange={(e) => { changeTwoName(e.target.value) }}
-          />
-        </div>
-      </div>
-    )
-  }
+export const MainComponent = () => {
+  return (
+    <>
+      <Auth />
+      <Registration />
+    </>
+  )
 }
-
-// данные из state в компонент
-const putStateToProps = (state) => {
-  return {
-    one: state.oneInput,
-    two: state.twoInput
-  }
-}
-
-const putActionsToProps = (dispatch) => {
-  return {
-    changeOneName: (arg) => dispatch(changeOne(arg)),
-    changeTwoName: (arg) => dispatch(changeTwo(arg))
-  }
-}
-
-export default connect(putStateToProps, putActionsToProps)(MainComponent)
