@@ -13,17 +13,20 @@ const initialState = {
 const ACTION_CHANGE_FIRST_NAME = 'ACTION_CHANGE_FIRST_NAME'
 const ACTION_CHANGE_SECOND_NAME = 'ACTION_CHANGE_SECOND_NAME'
 
-const actionChangeFirstName = {
-  type: ACTION_CHANGE_FIRST_NAME,
-  payload: null
-}
-
-const actionChangesSecondName = {
-  type: ACTION_CHANGE_SECOND_NAME,
-  payload: null
-}
 
 const rootReduser = (state = initialState, action) => {
+
+  switch (action.type) {
+    case ACTION_CHANGE_FIRST_NAME:
+      return {
+        ...state, oneInput: action.payload
+      }
+    case ACTION_CHANGE_SECOND_NAME:
+      return {
+        ...state, twoInput: action.payload
+      }
+  }
+
   return state
 }
 
